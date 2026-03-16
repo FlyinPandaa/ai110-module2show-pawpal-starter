@@ -34,10 +34,14 @@ The initial design had four classes: `PetProfile`, `Task`, `DailyPlan`, and `Sch
 - What constraints does your scheduler consider (for example: time, priority, preferences)?
 - How did you decide which constraints mattered most?
 
+- Some major considerations would be how much time the owner has, how urgent the tasks are, and when the tasks need to happen (for things like medication). Time and prioority matter moset because a pet owner with limited amount of time can't complete all tasks, so the scheduler needs to pick the most important tasks first and drop the rest or  save it for another time.
+
 **b. Tradeoffs**
 
 - Describe one tradeoff your scheduler makes.
 - Why is that tradeoff reasonable for this scenario?
+
+- The scheduler always picks high-prioority tasks first, even if a lower-prioirty task  fits better in the remaining time. For example, if 10 minutes are remaining and a priority-5 task takes 15 minutes, it gets skipped, because a priority-2 task that takes 5 minutes could fit better into the schedule. This is reasonable because skipping a medication time versus skipping a grooming time are vastly different in priority. Feeding the medication to the pet is critical  compared to the grooming time.
 
 ---
 
@@ -48,10 +52,14 @@ The initial design had four classes: `PetProfile`, `Task`, `DailyPlan`, and `Sch
 - How did you use AI tools during this project (for example: design brainstorming, debugging, refactoring)?
 - What kinds of prompts or questions were most helpful?
 
+- I used AI tools for brainstorming classes, debugging, refactoring code, and reviewing its own implementation. A useful prompt, was after generating the implementation, for `pawpal_system.py` I asked Claude Code the following, "You are a senior software engineer. Review the code you written and identify any bottlenecks or issues that might arise. Fix those issues and report back your findings and solutions."
+
 **b. Judgment and verification**
 
 - Describe one moment where you did not accept an AI suggestion as-is.
 - How did you evaluate or verify what the AI suggested?
+
+- One time where I didn't accept an AI suggestion as-is is while generating the classes for the application. Claude Code generated 8 classes, and I realized that it was too many classes for the Pawpal app for now. So I asked it to reduce the number of classes to keep the application as simple as possible for now. I read through what was suggested by the AI and then I think about whether it was something I wanted or not. If I didn't want those changes or don't like the suggestion, I provide Claude what I didn't like and ask it to think again until I am satisfied.
 
 ---
 
