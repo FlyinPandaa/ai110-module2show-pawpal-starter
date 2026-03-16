@@ -70,10 +70,22 @@ The initial design had four classes: `PetProfile`, `Task`, `DailyPlan`, and `Sch
 - What behaviors did you test?
 - Why were these tests important?
 
+- Verified that calling `mark_complete()` increments completions_today and makes `is_due()` return `False`. This matters because the scheduler skips completed tasks. If this logic broke, the same task could be scheduled twice in one day which is not what we want.
+
+- Verified that `add_task()` grows the profile's task list. This is an important operation in the app, because if the `add_tak()` doesn't work, then  nothing else works.
+
+- These tests are important  because they cover the two behaviors the entire scheduler depends on know what tasks  exist and knowing which ones to run.
+
 **b. Confidence**
 
 - How confident are you that your scheduler works correctly?
 - What edge cases would you test next if you had more time?
+
+- I think the scheduler will work fine for the most part. Some examples would be priority ordering, time conflict detection, budget enforcement, and recurring  task tracking. The main gap is that our current tests only cover `Task` and `PetProfile`. The `Scheduler` doesn't have any automated tests, and it might be best to implement tests for `Scheduluer` if we had more time.
+
+- For some possible edge cases, I asked Claude Code, and some edge cases that were suggested was the following:
+    - What happens if all taks exceed the budget? Does the plan return an empty schedule without crashing?
+    - Does a `TWICE_DAILY` task reset correctly at midnight and allow two runs the next day?
 
 ---
 
@@ -83,10 +95,16 @@ The initial design had four classes: `PetProfile`, `Task`, `DailyPlan`, and `Sch
 
 - What part of this project are you most satisfied with?
 
+- The pawpal_system.py is probably the best part of the project, because we spent a decent amount of time on this portion of the application. It features the core functionality of the project. It also has the most lines of code haha. 
+
 **b. What you would improve**
 
 - If you had another iteration, what would you improve or redesign?
 
+- I would redesign the UI, it's a simple UI that allows testing the core functionality easy, but if I had another chance to work on this application, I would work  on the UI and make it look more robust. For example, once we generate the schedule, I would like to see a calendar or something like Google calender with the times and dates listed on the side and top.
+
 **c. Key takeaway**
 
 - What is one important thing you learned about designing systems or working with AI on this project?
+
+- One important thing I learned was to keep the Claude in check when it comes to implementing changes or brainstorming. For the most part the application is suppose to be simple, but one I asked Claude with ideas on what classes I need, I was recommended 8 different classes, which was alot for the lightweight application we were  going to build.
