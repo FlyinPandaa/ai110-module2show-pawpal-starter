@@ -2,15 +2,28 @@
 
 ## 1. System Design
 
+- Three core actions:
+    - Enter owner and Pet info
+    - Add/edit care tasks
+    - Generate a daily schedule while taking into account priorities for the day
+
 **a. Initial design**
 
-- Briefly describe your initial UML design.
-- What classes did you include, and what responsibilities did you assign to each?
+The initial design had four classes: `PetProfile`, `Task`, `DailyPlan`, and `Scheduler`.
+
+- `PetProfile` — merged owner and pet data into one class (name, species, time budget, special needs).
+- `Task` — a single care activity with a name, category, duration, priority, and optional preferred time.
+- `DailyPlan` — the schedule output; holds scheduled `(Task, time)` pairs, skipped tasks, and a `reasoning` string populated by the Claude API explaining why tasks were prioritized or skipped.
+- `Scheduler` — the coordinator; prioritizes tasks, fits them into the time budget, and produces a `DailyPlan`.
+
+
 
 **b. Design changes**
 
 - Did your design change during implementation?
 - If yes, describe at least one change and why you made it.
+
+- Yes, at first I wanted to include both the Owner profile and the pet profile. I asked Claude for some help on simplifying my classes, and Claude proposed to just have `PetProfile` instead of 2 separate classes.
 
 ---
 
