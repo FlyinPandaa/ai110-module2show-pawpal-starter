@@ -46,7 +46,7 @@ pip install -r requirements.txt
 
 To test run the following command: `python -m pytest`.
 
-Below is a table of what tests are covered in the test_pawpal.py along with category and description of the test. Based on the test results: 5-stars for the system's realiability.
+Below is a table of what tests are covered in the test_pawpal.py along with category and description of the test. Based on the test results: :star: :star: :star: :star: :star: for the system's realiability.
 
 | Test | Category | Description |
 |---|---|---|
